@@ -9,6 +9,10 @@ const client = new Client({
 });
 
 const createTablesQuery = `
+
+  CREATE TYPE gender_enum AS ENUM ('male', 'female');
+  CREATE TYPE type_enum AS ENUM ('Cena Grande', 'Alta Dieta');
+
   -- Create table: slavo
   CREATE TABLE IF NOT EXISTS slavo (
     id SERIAL PRIMARY KEY,
@@ -17,7 +21,7 @@ const createTablesQuery = `
     alias VARCHAR(100) NOT NULL,
     city VARCHAR(100),
     email VARCHAR(255),
-    gender VARCHAR(10) CHECK (gender IN ('male', 'female')),
+    gender gender_enum,
     phone_number VARCHAR(15),
     alive BOOLEAN NOT NULL DEFAULT TRUE
   );
@@ -34,7 +38,7 @@ const createTablesQuery = `
   CREATE TABLE IF NOT EXISTS cena (
     id SERIAL PRIMARY KEY,
     date DATE NOT NULL,
-    type VARCHAR(20) CHECK (type IN ('Cena Grande', 'Alta Dieta'))
+    type type_enum
   );
 
   -- Create table: presenze (join table)
