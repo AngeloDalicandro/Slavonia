@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: slavo
+      POSTGRES_PASSWORD: vivaslavonia
+      POSTGRES_DB: slavocchia
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@slavonia.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+#  frontend:
+#    build:
+#      context: ./slavonia
+#      dockerfile: Dockerfile
+#    container_name: nextjs-frontend
+#    ports:
+#      - "3000:3000"
+#    environment:
+#      NEXT_PUBLIC_API_URL: http://localhost:5432
+#    depends_on:
+#      - db
+
+volumes:
+  postgres_data:
+  pgadmin_data:

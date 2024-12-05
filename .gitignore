@@ -1,0 +1,44 @@
+node_modules# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+node_modules/
+npm-shrinkwrap.json
+
+build/
+dist/
+.next/
+
+.env
+.env.local
+.env.*.local
+
+docker-compose.override.yml
+*.pid
+*.bak
+*.swp
+
+out/ # Output directory for Next.js static exports
+.next/ # Next.js build directory
+.cache/ # Any cache directory
+*.map # Source map files
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+
+
+*.tmp
+*.log
+*.out
+*.pid
+*.seed # Seeder files that shouldn't be committed if generated
+
+.npmrc
+.pnpm-debug.log
+*.eslintcache
+stylelintcache
